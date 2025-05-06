@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 13:08:42 by jeportie          #+#    #+#             */
-/*   Updated: 2025/05/05 15:35:28 by jeportie         ###   ########.fr       */
+/*   Updated: 2025/05/06 08:04:57 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,15 @@
 #define SCALARCONVERTER_HPP
 
 #include <string>
-#include "../../include/LiteralType.hpp"
+
+enum LiteralType
+{
+    CHAR,
+    INT,
+    FLOAT,
+    DOUBLE,
+    INVALID
+};
 
 class ScalarConverter
 {
@@ -32,10 +40,10 @@ private:
     static bool isFloatLiteral(const std::string& s);
     static bool isDoubleLiteral(const std::string& s);
 
-    static void fromChar(char c);
-    static void fromInt(int i);
-    static void fromFloat(float f);
-    static void fromDouble(double d);
+    static void caseChar(char c);
+    static void caseInt(int i);
+    static void caseFloat(float f);
+    static void caseDouble(double d);
 
 
 	static LiteralType determineLiteralType(const std::string& literal);

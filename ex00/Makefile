@@ -23,6 +23,8 @@ ARGS=$(filter-out $@,$(MAKECMDGOALS))
 #### BEGIN AUTO GENERATED FILES ###
 # List of source files:
 SRC = \
+  src/class/ScalarConverterUtils.cpp \
+  src/class/ScalarConverterCheckers.cpp \
   src/class/ScalarConverter.cpp 
 ### END AUTO GENERATED FILES ###
 
