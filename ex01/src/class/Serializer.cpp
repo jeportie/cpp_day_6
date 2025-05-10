@@ -10,34 +10,19 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include <ostream>
 #include <stdint.h>
 #include "Serializer.hpp"
 #include "../../include/Data.hpp"
 
-Serializer::Serializer(void)
-{
-    std::cout << "[Serializer] - default constructor called - " << std::endl;
-}
+Serializer::Serializer(void) {}
 
-Serializer::Serializer(const Serializer& src)
-{
-    std::cout << "[Serializer] - copy constructor called - " << std::endl;
-    *this = src;
-    return;
-}
+Serializer::Serializer(const Serializer& src) { *this = src; }
 
-Serializer::~Serializer(void)
-{
-    std::cout << "[Serializer] - destructor called - " << std::endl;
-    return;
-}
+Serializer::~Serializer(void) {}
 
 Serializer& Serializer::operator=(const Serializer& rhs)
 {
-    std::cout << "[Serializer] - copy assignment operator called - " << std::endl;
-	(void) rhs;
+    (void) rhs;
     return (*this);
 }
 
