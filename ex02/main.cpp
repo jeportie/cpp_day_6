@@ -14,6 +14,8 @@
 #include "src/class/A.hpp"
 #include "src/class/B.hpp"
 #include "src/class/C.hpp"
+
+#include <exception>
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
@@ -43,22 +45,47 @@ Base* generate(void)
 
 void identify(Base* p)
 {
-    if (dynamic_cast<A*>(p))
+    if (!p)
+        return;
+
+    if (dynamic_cast<A*>(p) != 0)
         std::cout << "A" << std::endl;
-    if (dynamic_cast<B*>(p))
+    if (dynamic_cast<B*>(p) != 0)
         std::cout << "B" << std::endl;
-    if (dynamic_cast<C*>(p))
+    if (dynamic_cast<C*>(p) != 0)
         std::cout << "C" << std::endl;
 }
 
 void identify(Base& p)
 {
-    if (dynamic_cast<A*>(&p))
-        std::cout << "A" << std::endl;
-    else if (dynamic_cast<B*>(&p))
-        std::cout << "B" << std::endl;
-    else if (dynamic_cast<C*>(&p))
-        std::cout << "C" << std::endl;
+    try
+    {
+        // try A
+        (void) dynamic_cast<A&>(p);
+        std::cout << "A\n";
+    }
+    catch (std::exception& e)
+    {
+        try
+        {
+            // try B
+            (void) dynamic_cast<B&>(p);
+            std::cout << "B\n";
+        }
+        catch (std::exception& e)
+        {
+            try
+            {
+                // try C
+                (void) dynamic_cast<C&>(p);
+                std::cout << "C\n";
+            }
+            catch (std::exception& e)
+            {
+                // neither A, B nor C
+            }
+        }
+    }
 }
 
 int main()
