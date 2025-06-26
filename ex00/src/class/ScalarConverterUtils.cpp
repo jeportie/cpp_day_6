@@ -58,14 +58,17 @@ void ScalarConverter::caseFloat(float f)
     else
         std::cout << "char: impossible" << std::endl;
 
-    if (std::isnan(f) || std::isinf(f) || f < std::numeric_limits<int>::min()
-        || f > std::numeric_limits<int>::max())
+    const float INT_MIN_F = static_cast<float>(std::numeric_limits<int>::min());
+    const float INT_MAX_F = static_cast<float>(std::numeric_limits<int>::max());
+
+    if (std::isnan(f) || std::isinf(f) || f < INT_MIN_F || f > INT_MAX_F)
+    {
         std::cout << "int: impossible" << std::endl;
+    }
     else
         std::cout << "int: " << static_cast<int>(f) << std::endl;
 
     std::cout << "float: " << std::fixed << std::setprecision(1) << f << "f" << std::endl;
-
     double d = static_cast<double>(f);
     std::cout << "double: " << std::fixed << std::setprecision(1) << d << std::endl;
 }
